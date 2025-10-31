@@ -23,15 +23,13 @@ In this project, a machine learning model will be trained on historical nominees
     * Best Original/Adapted Screenplay
     * Best Actor/Actress
 
-This project has two objectives: first, to build a predictive model, and second, to analyze its features to determine if there are any "requirements" a film must fulfill to win 'Best Picture'.
+This project has two objectives: first, to build a predictive model, and second, to analyze its features to determine if there are any "requirements" a film must fulfill to win 'Best Picture'. Since the nominees for the 2026 Oscars are expected to be announced after the deadline of this project, I plan to use the data between the years 1990-2020 to train my machine learning model, which will predict the winners of 2021-2025 accordingly. I expect to find that the chances for a nominated movie to win Best Picture vary according to its quantifiable features.
 
-Since the nominees for the 2026 Oscars are expected to be announced after the deadline of this project, I plan to use the data between the years 1990-2020 to train my machine learning model, which will predict the winners of 2021-2025 accordingly. I expect to find that the chances for a nominated movie to win Best Picture vary according to its quantifiable features.
+##   Null Hypothesis
 
-##  hypotheses Null Hypothesis
+**H₀**: The quantifiable features of a film have no statistically significant predictive power in determining the Best Picture winner.
 
- **H₀**: The quantifiable features of a film have no statistically significant predictive power in determining the Best Picture winner.
-
-##  Data Collection and Methods
+## Data Collection and Methods
 
 As stated in the project guidelines I will use a primary public dataset from “kaggle.com” and enrich it with several others. In this project, I will use Python (Pandas) to get the data. If needed, the websites will be used with the web scraping and data cleaning methods.
 
@@ -48,4 +46,19 @@ In order to collect the data for genre, runtime, release date, public rating, ag
 * [https://www.rottentomatoes.com](https://www.rottentomatoes.com)
 
 In order to collect the data for studio, and performance in the Box Office, I will use these dataset and website:
-*
+* [https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset](https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset) gives the data for both box office revenue and the budget.
+* [https://www.boxofficemojo.com/](https://www.boxofficemojo.com/)
+
+In order to collect the data for critic score, I will use:
+
+**Dataset:**
+* [https://www.kaggle.com/datasets/davutb/metacritic-movies](https://www.kaggle.com/datasets/davutb/metacritic-movies) gives the data for Metacritic, Rotten Tomatoes, and IMDb ratings for a large list of movies.
+
+**Websites:**
+* [https://www.metacritic.com/](https://www.metacritic.com/)
+* [https://www.rottentomatoes.com/](https://www.rottentomatoes.com/)
+
+## Possible Limitations
+
+* **Political Context:** Political issues of the time the award was given may affect the winner drastically. The award may be given to a movie that reflects the political view of the academy, if so it could be very hard to detect.
+* **Filmmaker Reputation:** Reputation of the filmmaker is another possible contributor factor for a movie to win the award. A renowned director with many Oscar nominations but could not win an award might be a step ahead for the award.
