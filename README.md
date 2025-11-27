@@ -12,7 +12,6 @@ In this project, a machine learning model will be trained on historical nominees
 * Runtime
 * Release date
 * Critic score (MetaCritic)
-* Performance in the Box Office
 * Whether the movie is nominated for Best Director
 
 
@@ -36,10 +35,6 @@ In order to collect the data for genre, runtime, release date, and whether the m
 **Websites:**
 * [https://www.imdb.com/](https://www.imdb.com/) is used to get missing genre, runtime and the MetaCritic data.
 
-
-In order to collect the data for studio, and performance in the Box Office, I will use these dataset and website:
-* [https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset](https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset) gives the data for both box office revenue and the budget.
-* [https://www.boxofficemojo.com/](https://www.boxofficemojo.com/)
 
 
 
