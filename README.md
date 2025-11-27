@@ -34,7 +34,7 @@ In order to collect the data for genre, runtime, release date, and whether the m
 * These two datasets are merged with Python (Pandas). Since, some of the best picture nominated movies are not in iMDB top 1000 or some movie names do not match with each other in the datasets, the missing data is filled with web searching.
 
 **Websites:**
-* [https://www.imdb.com/](https://www.imdb.com/) is used t get missing genre, runtime and the MetaCritic data.
+* [https://www.imdb.com/](https://www.imdb.com/) is used to get missing genre, runtime and the MetaCritic data.
 
 
 In order to collect the data for studio, and performance in the Box Office, I will use these dataset and website:
@@ -56,7 +56,7 @@ A paired t-test yielded a p-value of 0.0099 ($p < 0.05$), leading to the rejecti
 * **Release Date**
 The Chi-Square test yielded a p-value of 0.4551 ($p > 0.05$), failing to reject the null hypothesis. Consequently, we find no statistically significant association between a movie's release quarter and its likelihood of winning Best Picture.
 
-* ** Best Director Nomination**
+* **Best Director Nomination**
 Chi-Square test yielded a p-value of 0.00079 ($p < 0.05$), providing strong evidence to reject the null hypothesis. This indicates a statistically significant dependency between the two variables; a movie's probability of winning Best Picture is heavily dependent on whether it also secured a nomination for Best Director.
 
 ## Possible Limitations
