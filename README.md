@@ -11,7 +11,7 @@ In this project, a machine learning model will be trained on historical nominees
 * Genre
 * Runtime
 * Release date
-* Critic score (MetaCritic and Rotten Tomatoes)
+* Critic score (MetaCritic)
 * Performance in the Box Office
 * Whether the movie is nominated for Best Director
 
@@ -26,44 +26,38 @@ This project has two objectives: first, to build a predictive model, and second,
 
 As stated in the project guidelines I will use a primary public dataset from “kaggle.com” and enrich it with several others. In this project, I will use Python (Pandas) to get the data. If needed, the websites will be used with the web scraping and data cleaning methods.
 
-In order to collect the data for genre, runtime, release date, public rating, age rating, awards collected in the award season and festivals, number of Oscar nominations, and whether the movie is nominated for: Best Director, Best Original/Adapted Screenplay, Best Actor/Actress, I will use:
+In order to collect the data for genre, runtime, release date, and whether the movie is nominated for Best Director, I will use:
 
 **Datasets:**
 * [https://www.kaggle.com/datasets/viniciusno/oscar-nominees-and-winners-1929-present](https://www.kaggle.com/datasets/viniciusno/oscar-nominees-and-winners-1929-present) is my based dataset, which shows Oscar nominees and winners. Additionally, it provides the data for total nominations.
-* [https://www.kaggle.com/datasets/unanimad/golden-globe-awards](https://www.kaggle.com/datasets/unanimad/golden-globe-awards) gives me the opportunity to enrich my dataset.
-* [https://www.kaggle.com/code/mollygarman/recent-oscar-winners](https://www.kaggle.com/code/mollygarman/recent-oscar-winners) gives clear data for recent Oscar winners, which is highly suitable for my project since it narrows down the set of movies.
+* [https://www.kaggle.com/datasets/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows) is used to get the genre, runtime, and the MetaCritic score of the movie.
+* These two datasets are merged with Python (Pandas). Since, some of the best picture nominated movies are not in iMDB top 1000 or some movie names do not match with each other in the datasets, the missing data is filled with web searching.
 
 **Websites:**
-* [https://www.imdb.com/](https://www.imdb.com/)
-* [https://letterboxd.com/](https://letterboxd.com/)
-* [https://www.rottentomatoes.com](https://www.rottentomatoes.com)
+* [https://www.imdb.com/](https://www.imdb.com/) is used t get missing genre, runtime and the MetaCritic data.
+
 
 In order to collect the data for studio, and performance in the Box Office, I will use these dataset and website:
 * [https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset](https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset) gives the data for both box office revenue and the budget.
 * [https://www.boxofficemojo.com/](https://www.boxofficemojo.com/)
 
-In order to collect the data for critic score, I will use:
-
-**Dataset:**
-* [https://www.kaggle.com/datasets/davutb/metacritic-movies](https://www.kaggle.com/datasets/davutb/metacritic-movies) gives the data for Metacritic, Rotten Tomatoes, and IMDb ratings for a large list of movies.
-
-**Websites:**
-* [https://www.metacritic.com/](https://www.metacritic.com/)
-* [https://www.rottentomatoes.com/](https://www.rottentomatoes.com/)
 
 
 ## Data Analysis and Results
-**Genre**
-\nGiven that movies can be classified into multiple genres, Fisher's Exact Test was employed to analyze the dependency between genre and award outcomes. The resulting $p$-values for each genre ranged from $0.115$ to $1.0$. Consequently, we fail to reject the null hypothesis, indicating no statistically significant relationship between a movie's genre and its likelihood of winning the Best Picture award.
+* **Genre**
+Given that movies can be classified into multiple genres, Fisher's Exact Test was employed to analyze the dependency between genre and award outcomes. The resulting $p$-values for each genre ranged from $0.115$ to $1.0$. Consequently, we fail to reject the null hypothesis, indicating no statistically significant relationship between a movie's genre and its likelihood of winning the Best Picture award.
 
-**Runtime**
+* **Runtime**
 Initially, an independent samples t-test yielded a p-value of 0.1467 ($p > 0.05$), failing to reject the null hypothesis. Subsequently, using quantile binning produced a lower p-value of 0.066. While this result suggests a stronger association than the t-test, it remains statistically insignificant. Therefore, we conclude that there is no significant relationship between a movie's runtime and its likelihood of winning an award.
 
-**MetaScore**
+* **MetaScore**
 A paired t-test yielded a p-value of 0.0099 ($p < 0.05$), leading to the rejection of the null hypothesis. This indicates a statistically significant difference in critical reception, with Oscar winners consistently achieving higher Meta Scores than their yearly rivals. However, having the highest score is not a guarantee; the single highest-rated movie of the year wins the award only 33.3% of the time.
 
 **Release Date**
 The Chi-Square test yielded a p-value of 0.4551 ($p > 0.05$), failing to reject the null hypothesis. Consequently, we find no statistically significant association between a movie's release quarter and its likelihood of winning Best Picture.
+
+* ** Best Director Nomination**
+Chi-Square test yielded a p-value of 0.00079 ($p < 0.05$), providing strong evidence to reject the null hypothesis. This indicates a statistically significant dependency between the two variables; a movie's probability of winning Best Picture is heavily dependent on whether it also secured a nomination for Best Director.
 
 ## Possible Limitations
 
