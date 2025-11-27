@@ -53,7 +53,7 @@ Initially, an independent samples t-test yielded a p-value of 0.1467 ($p > 0.05$
 * **MetaScore**
 A paired t-test yielded a p-value of 0.0099 ($p < 0.05$), leading to the rejection of the null hypothesis. This indicates a statistically significant difference in critical reception, with Oscar winners consistently achieving higher Meta Scores than their yearly rivals. However, having the highest score is not a guarantee; the single highest-rated movie of the year wins the award only 33.3% of the time.
 
-**Release Date**
+* **Release Date**
 The Chi-Square test yielded a p-value of 0.4551 ($p > 0.05$), failing to reject the null hypothesis. Consequently, we find no statistically significant association between a movie's release quarter and its likelihood of winning Best Picture.
 
 * ** Best Director Nomination**
