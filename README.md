@@ -54,7 +54,7 @@ The Chi-Square test yielded a p-value of 0.4551 ($p > 0.05$), failing to reject 
 * **Best Director Nomination**
 Chi-Square test yielded a p-value of 0.00079 ($p < 0.05$), providing strong evidence to reject the null hypothesis. This indicates a statistically significant dependency between the two variables; a movie's probability of winning Best Picture is heavily dependent on whether it also secured a nomination for Best Director.
 
-## Possible Limitations
+## Limitations
 
-* **Political Context:** Political issues of the time the award was given may affect the winner drastically. The award may be given to a movie that reflects the political view of the academy, if so it could be very hard to detect.
+* **Oscar Bump:** As explained in the project proposal,a 'Best Picture' win provides significant marketing value. Therefore, the model excludes box office data to avoid data leakage, as ticket sales often increase significantly after nominations and award wins. Using total gross would imply that the model has access to future information that was not available at the time of prediction. 
 * **Filmmaker Reputation:** Reputation of the filmmaker is another possible contributor factor for a movie to win the award. A renowned director with many Oscar nominations but could not win an award might be a step ahead for the award.
