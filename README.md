@@ -12,16 +12,9 @@ In this project, a machine learning model will be trained on historical nominees
 * Runtime
 * Release date
 * Critic score (MetaCritic and Rotten Tomatoes)
-* Public rating (IMDb and Letterboxd)
-* Studio (Major/Indie/Streaming Platform)
 * Performance in the Box Office
-* Awards collected in the award season and festivals (Golden Globes, SAG, Cannes)
-* Age rating
-* Number of Oscar nominations in all categories
-* Whether the movie is nominated for:
-    * Best Director
-    * Best Original/Adapted Screenplay
-    * Best Actor/Actress
+* Whether the movie is nominated for Best Director
+
 
 This project has two objectives: first, to build a predictive model, and second, to analyze its features to determine if there are any "requirements" a film must fulfill to win 'Best Picture'. Since the nominees for the 2026 Oscars are expected to be announced after the deadline of this project, I plan to use the data between the years 1990-2020 to train my machine learning model, which will predict the winners of 2021-2025 accordingly. I expect to find that the chances for a nominated movie to win Best Picture vary according to its quantifiable features.
 
@@ -57,6 +50,20 @@ In order to collect the data for critic score, I will use:
 **Websites:**
 * [https://www.metacritic.com/](https://www.metacritic.com/)
 * [https://www.rottentomatoes.com/](https://www.rottentomatoes.com/)
+
+
+## Data Analysis and Results
+**Genre**
+Given that movies can be classified into multiple genres, Fisher's Exact Test was employed to analyze the dependency between genre and award outcomes. The resulting $p$-values for each genre ranged from $0.115$ to $1.0$. Consequently, we fail to reject the null hypothesis, indicating no statistically significant relationship between a movie's genre and its likelihood of winning the Best Picture award.
+
+**Runtime**
+Initially, an independent samples t-test yielded a p-value of 0.1467 ($p > 0.05$), failing to reject the null hypothesis. Subsequently, using quantile binning produced a lower p-value of 0.066. While this result suggests a stronger association than the t-test, it remains statistically insignificant. Therefore, we conclude that there is no significant relationship between a movie's runtime and its likelihood of winning an award.
+
+**MetaScore**
+A paired t-test yielded a p-value of 0.0099 ($p < 0.05$), leading to the rejection of the null hypothesis. This indicates a statistically significant difference in critical reception, with Oscar winners consistently achieving higher Meta Scores than their yearly rivals. However, having the highest score is not a guarantee; the single highest-rated movie of the year wins the award only 33.3% of the time.
+
+**Release Date**
+The Chi-Square test yielded a p-value of 0.4551 ($p > 0.05$), failing to reject the null hypothesis. Consequently, we find no statistically significant association between a movie's release quarter and its likelihood of winning Best Picture.
 
 ## Possible Limitations
 
