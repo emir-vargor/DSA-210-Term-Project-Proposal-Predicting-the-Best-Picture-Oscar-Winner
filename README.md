@@ -13,6 +13,7 @@ In this project, a machine learning model will be trained on historical nominees
 * Release date
 * Critic score (MetaCritic)
 * Whether the movie is nominated for Best Director
+* Whether the movie won Best Motion - Picture or Best Motion - Musical or Comedy in Golden Globes
 
 
 This project has two objectives: first, to build a predictive model, and second, to analyze its features to determine if there are any "requirements" a film must fulfill to win 'Best Picture'. Since the nominees for the 2026 Oscars are expected to be announced after the deadline of this project, I plan to use the data between the years 1990-2020 to train my machine learning model, which will predict the winners of 2021-2025 accordingly. I expect to find that the chances for a nominated movie to win Best Picture vary according to its quantifiable features.
@@ -28,9 +29,10 @@ As stated in the project guidelines I will use a primary public dataset from “
 In order to collect the data for genre, runtime, release date, and whether the movie is nominated for Best Director, I will use:
 
 **Datasets:**
-* [https://www.kaggle.com/datasets/viniciusno/oscar-nominees-and-winners-1929-present](https://www.kaggle.com/datasets/viniciusno/oscar-nominees-and-winners-1929-present) is my based dataset, which shows Oscar nominees and winners. Additionally, it provides the data for total nominations.
+* [https://www.kaggle.com/datasets/viniciusno/oscar-nominees-and-winners-1929-present](https://www.kaggle.com/datasets/viniciusno/oscar-nominees-and-winners-1929-present) is my based dataset, which shows Oscar nominees and winners.
 * [https://www.kaggle.com/datasets/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows) is used to get the genre, runtime, and the MetaCritic score of the movie.
-* These two datasets are merged with Python (Pandas). Since, some of the best picture nominated movies are not in iMDB top 1000 or some movie names do not match with each other in the datasets, the missing data is filled with web searching.
+* [https://www.kaggle.com/code/isaienkov/full-eda-and-visualization-golden-globe-awards/input) is used to get the data for the Golden Globes Awards nomination.
+* These three datasets are merged with Python (Pandas). Since, some of the best picture nominated movies are not in iMDB top 1000 or some movie names do not match with each other in the datasets, the missing data is filled with web searching.
 
 **Websites:**
 * [https://www.imdb.com/](https://www.imdb.com/) is used to get missing genre, runtime and the MetaCritic data.
@@ -53,6 +55,9 @@ The Chi-Square test yielded a p-value of 0.4551 ($p > 0.05$), failing to reject 
 
 * **Best Director Nomination**
 Chi-Square test yielded a p-value of 0.00079 ($p < 0.05$), providing strong evidence to reject the null hypothesis. This indicates a statistically significant dependency between the two variables; a movie's probability of winning Best Picture is heavily dependent on whether it also secured a nomination for Best Director.
+
+* **GOLDEN GLOBE WINNING** *
+We hypothesized a significant correlation between winning a Golden Globe and the Best Picture Oscar, testing this by comparing winners of both awards using Fisher's Exact Test due to our small sample size (4). The test yielded a p-value of ~0.000024, far below the 0.05 threshold, which leads us to reject the null hypothesis; this extremely low value confirms that the overlap in winners is not random, but rather that winning a Golden Globe is a statistically significant predictor of Oscar success.
 
 ## Limitations
 
