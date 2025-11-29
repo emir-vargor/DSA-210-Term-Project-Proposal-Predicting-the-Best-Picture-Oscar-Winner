@@ -29,7 +29,7 @@ As stated in the project guidelines I will use a primary public dataset from “
 In order to collect the data for genre, runtime, release date, and whether the movie is nominated for Best Director, I will use:
 
 **Datasets:**
-* [https://www.kaggle.com/datasets/viniciusno/oscar-nominees-and-winners-1929-present](https://www.kaggle.com/datasets/viniciusno/oscar-nominees-and-winners-1929-present is my based dataset, which shows Oscar nominees and winners.
+* https://www.kaggle.com/datasets/viniciusno/oscar-nominees-and-winners-1929-present is my based dataset, which shows Oscar nominees and winners.
 * https://www.kaggle.com/datasets/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows is used to get the genre, runtime, and the MetaCritic score of the movie.
 * https://www.kaggle.com/code/isaienkov/full-eda-and-visualization-golden-globe-awards/input is used to get the data for the Golden Globes Awards.
 * These three datasets are merged with Python (Pandas). Since, some of the best picture nominated movies are not in iMDB top 1000 or some movie names do not match with each other in the datasets, the missing data is filled with web searching.
