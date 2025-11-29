@@ -13,7 +13,7 @@ In this project, a machine learning model will be trained on historical nominees
 * Release date
 * Critic score (MetaCritic)
 * Whether the movie is nominated for Best Director
-* Whether the movie won Best Motion - Picture or Best Motion - Musical or Comedy in Golden Globes
+* Whether the movie won Best Motion Picture - Drama  or Best Motion Picture - Musical or Comedy in Golden Globes
 
 
 This project has two objectives: first, to build a predictive model, and second, to analyze its features to determine if there are any "requirements" a film must fulfill to win 'Best Picture'. Since the nominees for the 2026 Oscars are expected to be announced after the deadline of this project, I plan to use the data between the years 1990-2020 to train my machine learning model, which will predict the winners of 2021-2025 accordingly. I expect to find that the chances for a nominated movie to win Best Picture vary according to its quantifiable features.
