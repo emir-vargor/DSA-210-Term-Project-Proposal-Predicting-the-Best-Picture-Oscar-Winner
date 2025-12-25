@@ -14,6 +14,7 @@ In this project, a machine learning model will be trained on historical nominees
 * Critic score (MetaCritic)
 * Whether the movie is nominated for Best Director
 * Whether the movie won Best Motion Picture - Drama  or Best Motion Picture - Musical or Comedy in Golden Globes
+* Whether the movie won Best Theatrical Motion Picture award in Producers Guild of America Awards
 
 
 This project has two objectives: first, to build a predictive model, and second, to analyze its features to determine if there are any "requirements" a film must fulfill to win 'Best Picture'. Since the nominees for the 2026 Oscars are expected to be announced after the deadline of this project, I plan to use the data between the years 1990-2020 to train my machine learning model, which will predict the winners of 2021-2025 accordingly. I expect to find that the chances for a nominated movie to win Best Picture vary according to its quantifiable features.
@@ -36,6 +37,7 @@ In order to collect the data for genre, runtime, release date, and whether the m
 
 **Websites:**
 * [https://www.imdb.com/](https://www.imdb.com/) is used to get missing genre, runtime and the MetaCritic data.
+* https://en.wikipedia.org/wiki/Producers_Guild_of_America_Awards is used to get PGA data.
 
 
 
@@ -56,8 +58,11 @@ The Chi-Square test yielded a p-value of 0.4551 ($p > 0.05$), failing to reject 
 * **Best Director Nomination**
 Chi-Square test yielded a p-value of 0.000145 ($p < 0.05$), providing strong evidence to reject the null hypothesis. This indicates a statistically significant dependency between the two variables; a movie's probability of winning Best Picture is heavily dependent on whether it also secured a nomination for Best Director.
 
-* **GOLDEN GLOBE WINNING** 
+* **Golden Globe Winning** 
 We hypothesized a significant correlation between winning a Golden Globe and the Best Picture Oscar, testing this by comparing winners of both awards using Fisher's Exact Test due to our small sample size (4). The test yielded a p-value of 0.000034, far below the 0.05 threshold, which leads us to reject the null hypothesis; this extremely low value confirms that the overlap in winners is not random, but rather that winning a Golden Globe is a statistically significant predictor of Oscar success.
+
+* **Producers Guild of America Awards Winning**
+
 
 ## Limitations
 
