@@ -42,21 +42,21 @@ In order to collect the data for genre, runtime, release date, and whether the m
 
 ## Data Analysis and Results
 * **Genre**
-Given that movies can be classified into multiple genres, Fisher's Exact Test was employed to analyze the dependency between genre and award outcomes. The resulting $p$-values for each genre ranged from $0.115$ to $1.0$. Consequently, we fail to reject the null hypothesis, indicating no statistically significant relationship between a movie's genre and its likelihood of winning the Best Picture award.
+Given that movies can be classified into multiple genres, Fisher's Exact Test was employed to analyze the dependency between genre and award outcomes. The resulting $p$-values for each genre ranged from $0.11$ to $1.0$. Consequently, we fail to reject the null hypothesis, indicating no statistically significant relationship between a movie's genre and its likelihood of winning the Best Picture award.
 
 * **Runtime**
-Initially, an independent samples t-test yielded a p-value of 0.1467 ($p > 0.05$), failing to reject the null hypothesis. Subsequently, using quantile binning produced a lower p-value of 0.066. While this result suggests a stronger association than the t-test, it remains statistically insignificant. Therefore, we conclude that there is no significant relationship between a movie's runtime and its likelihood of winning an award.
+Initially, an independent samples t-test yielded a p-value of 0.1379 ($p > 0.05$), failing to reject the null hypothesis. Subsequently, using quantile binning produced a lower p-value of $p = 0.0225$ > $0.0038$ (A corrected p-value according to the Bonferroni correction.) . While this result suggests a stronger association than the t-test, it remains statistically insignificant. Therefore, we conclude that there is no significant relationship between a movie's runtime and its likelihood of winning an award.
 
 * **MetaScore**
-A paired t-test yielded a p-value of 0.0099 ($p < 0.05$), leading to the rejection of the null hypothesis. This indicates a statistically significant difference in critical reception, with Oscar winners consistently achieving higher Meta Scores than their yearly rivals. However, having the highest score is not a guarantee; the single highest-rated movie of the year wins the award only 33.3% of the time.
+A paired t-test yielded a p-value of 0.0389 ($p < 0.05$), leading to the rejection of the null hypothesis. This indicates a statistically significant difference in critical reception, with Oscar winners consistently achieving higher Meta Scores than their yearly rivals. However, having the highest score is not a guarantee; the single highest-rated movie of the year wins the award only 29% of the time. Moreover, subsequent binned analysis with Bonferroni correction revealed that no specific score range guarantees a win, reinforcing the idea that high scores are necessary but insufficient on their own.
 
 * **Release Date**
 The Chi-Square test yielded a p-value of 0.4551 ($p > 0.05$), failing to reject the null hypothesis. Consequently, we find no statistically significant association between a movie's release quarter and its likelihood of winning Best Picture.
 
 * **Best Director Nomination**
-Chi-Square test yielded a p-value of 0.00079 ($p < 0.05$), providing strong evidence to reject the null hypothesis. This indicates a statistically significant dependency between the two variables; a movie's probability of winning Best Picture is heavily dependent on whether it also secured a nomination for Best Director.
+Chi-Square test yielded a p-value of 0.000145 ($p < 0.05$), providing strong evidence to reject the null hypothesis. This indicates a statistically significant dependency between the two variables; a movie's probability of winning Best Picture is heavily dependent on whether it also secured a nomination for Best Director.
 
-* **GOLDEN GLOBE WINNING** *
+* **GOLDEN GLOBE WINNING** 
 We hypothesized a significant correlation between winning a Golden Globe and the Best Picture Oscar, testing this by comparing winners of both awards using Fisher's Exact Test due to our small sample size (4). The test yielded a p-value of ~0.000024, far below the 0.05 threshold, which leads us to reject the null hypothesis; this extremely low value confirms that the overlap in winners is not random, but rather that winning a Golden Globe is a statistically significant predictor of Oscar success.
 
 ## Limitations
