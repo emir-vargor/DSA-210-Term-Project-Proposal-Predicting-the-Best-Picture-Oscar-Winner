@@ -70,16 +70,12 @@ To operationalize these findings, I built a machine learning model to predict th
 * Training & Testing Split: Training Set is set of movies from 1990 to 2020. Testing Set is set of movies from 2021 to 2025.
 * Features Used: Runtime, MetaScore (MinMax Scaled). Boolean Flags: Nominated_Both_Director_and_Picture, Golden_Globe_Picture_Winner, pga_winner. Genre (One-Hot Encoded).
 * Model Results (2021–2025 Performance) : Predict correctly for 2021,2023,2024,2025. For 2022, CODA stood out as an anomaly, becoming only the sixth film in history to win Best Picture without a Best Director nomination.
-* Feature Importance:
-*   PGA Winner (32%)
-*   MetaScore (14%)
-*   Runtime (13%)
-*   Golden Globe Winner (9%)
+* Feature Importance: PGA Winner (32%), MetaScore (14%), Runtime (13%), Golden Globe Winner (9%)
 
 
 ## Conclusion
-Rejecting the Null Hypothesis: Based on both statistical testing and the success of the Machine Learning model, we reject the Null Hypothesis ($H_0$). Quantifiable features do have significant predictive power.
-The initial suspicion that winners follow a pattern is true, but it is not necessarily a pattern of content (Genre, Runtime). Instead, it is a pattern of Industry Consensus. Critical Quality and performance in the award season are the decidig factors. In conclusion, winning Best Picture is less about the type of movie you make and more about securing the specific approval of industry guilds (Directors and Producers) and maintaining high critical acclaim.
+* **Rejecting the Null Hypothesis:** Based on both statistical testing and the success of the Machine Learning model, we reject the Null Hypothesis ($H_0$). Quantifiable features do have significant predictive power.
+* The initial suspicion that winners follow a pattern is true, but it is not necessarily a pattern of content (Genre, Runtime). Instead, it is a pattern of Industry Consensus. Critical Quality and performance in the award season are the decidig factors. In conclusion, winning Best Picture is less about the type of movie you make and more about securing the specific approval of industry guilds (Directors and Producers) and maintaining high critical acclaim.
 
 
 ## AI Usage
