@@ -75,7 +75,7 @@ To operationalize these findings, I built a machine learning model to predict th
 
 ## Conclusion
 * **Rejecting the Null Hypothesis:** Based on both statistical testing and the success of the Machine Learning model, we reject the Null Hypothesis ($H_0$). Quantifiable features do have significant predictive power.
-* The initial suspicion that winners follow a pattern is true, but it is not necessarily a pattern of content (Genre, Runtime). Instead, it is a pattern of Industry Consensus. Critical Quality and performance in the award season are the decidig factors. In conclusion, winning Best Picture is less about the type of movie you make and more about securing the specific approval of industry guilds (Directors and Producers) and maintaining high critical acclaim.
+* The initial suspicion that winners follow a pattern is true, but it is not necessarily a pattern of content (Genre, Runtime). Instead, it is a pattern of Industry Consensus. Critical Quality and performance in the award season are the deciding factors. In conclusion, winning Best Picture is less about the type of movie you make and more about securing the specific approval of industry guilds (Directors and Producers) and maintaining high critical acclaim.
 
 
 ## AI Usage
