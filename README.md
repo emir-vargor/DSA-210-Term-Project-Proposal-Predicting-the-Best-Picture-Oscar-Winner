@@ -62,37 +62,56 @@ Chi-Square test yielded a p-value of 0.000265 ($p < 0.05$), providing strong evi
 We hypothesized a significant correlation between winning a Golden Globe and the Best Picture Oscar, testing this by comparing winners of both awards using Fisher's Exact Test due to our small sample size (4). The test yielded a p-value of 0.000045, far below the 0.05 threshold, which leads us to reject the null hypothesis; this extremely low value confirms that the overlap in winners is not random, but rather that winning a Golden Globe is a statistically significant predictor of Oscar success.
 
 * **Producers Guild of America Awards Winning**
-A Fisher's Exact Test on the relationship between winning a PGA award and winning Best Picture yielded a p-value of 0.00000... (almost zero) ($p < 0.05$) and an Odds Ratio of 41.95. This extremely strong statistical significance leads us to reject the null hypothesis. The analysis confirms that the PGA Award is the single most critical indicator of Oscar success in this study.
+A Fisher's Exact Test on the relationship between winning a PGA award and winning Best Picture yielded a p-value of 0.00000... (almost zero) ($p < 0.05$) and an Odds Ratio of 41.95. This extremely strong statistical significance leads us to reject the null hypothesis. The analysis confirms that the PGA Award is the single most critical indicator of Oscar success in this study.  
+
+Visuals can be found on "tests_and_graphs.ipynb". 
+
 
 ## Machine Learning Model
-To operationalize these findings, I build a machine learning model that depends on *the Random Forest algorithm* to predict the Best Picture winner. 
-The motivation behind this choice is the specific nature of our dataset and the prediction task:
-1.   Handling Small Datasets and Overfitting
-2.   Addressing Class Imbalance
-1.   Feature Importance and Interpretability
-   
+In this part, we use *the Random Forest algorithm*. The motivation behind this choice was the specific nature of our dataset and the prediction task:
+1.   **Handling Small Datasets and Overfitting:** Our training dataset consists of approximately 193 samples (N=193). With such limited data, Random Forest algorithm is highly suitable for avoiding overfitting (high variance), since the Random Forest algorithm is trained over different subsets of data and gives the average of the predictions, resulting in reduced variance and improved generalization.
+2.   **Addressing Class Imbalance:** The Oscar prediction task involves a highly imbalanced dataset, where the minority class ('Winner') is significantly smaller than the majority class ('Non-Winner'). Random Forest allows us to effectively handle this imbalance by utilizing the "class_weight='balanced'" parameter. This parameter leads the model to penalize misclassifying the minority class more heavily.
+
+1.   **Feature Importance and Interpretability:** Random Forest provides interpretability through Feature Importance scores. This is crucial for our analysis, as it allows us to quantify the impact of specific features (such as PGA Awards or Genre) on a film's probability of winning.  
+
 &nbsp;
 &nbsp;
 
-Then, I design two ML models. First one is the baseline model, that is created for the purpose of seeking the parts that needs to be improved. The results of this model are considerably poor, since the baseline model doesnot encompass various enriching, purifying and, refining methods. Then I used these tecniques to strenghen the model and create an Advanced ML Model:  
 
-1.   Natural Language Processing (NLP) with TF-IDF
-2.  Feature Selection via RFE
+### Advanced Machine Learning Model
 
-1.   Dimensionality Reduction with PCA
-2.   Model Optimization with GridSearchCV & Cross-Validation  
+In order to strenghening our dataset we used these tecniques:
+
+
+1.   **Natural Language Processing (NLP) with TF-IDF:** In order to effectively utilize the categorical 'Genre' data, we applied TF-IDF (Term Frequency-Inverse Document Frequency) vectorization, simple One-Hot Encoding. This technique assigns weights to genre tags based on their frequency across the dataset.In this way, the model can distinguish between common genres (e.g., 'Drama') and rarer, potentially more distinguishing genres (e.g., 'Musical'), enriching the feature space with semantic importance.
+2.  **Feature Selection via RFE:** Given the limited size of our dataset (N=193), reducing dimensionality was crucial to prevent overfitting. We employed Recursive Feature Elimination (RFE) to iteratively discard the least significant features. This allowed us to identify and retain only the top 10 most predictive features, and resulted in reducing noise and improving the model's generalization capability.
+
+1.   **Dimensionality Reduction with PCA:** We utilized Principal Component Analysis (PCA) as an unsupervised learning technique for Exploratory Data Analysis (EDA). By projecting the high-dimensional feature space into two principal components, we visualized the separability of the 'Winner' and 'Non-Winner' classes. This visualization provided insights into the intrinsic difficulty of the classification task and the clustering behavior of the data.
+2.   **Model Optimization with GridSearchCV & Cross-Validation:** In order to ensure the robustness of our Random Forest model, we implemented Stratified 5-Fold Cross-Validation. This was particularly important due to the class imbalance, as it ensured that each fold contained a representative ratio of winners. Furthermore, we used GridSearchCV to systematically tune hyperparameters (e.g., max_depth, n_estimators), finding the optimal trade-off between bias and variance.  
+
+&nbsp;
+&nbsp;
+
+Our dataset is small and imbalanced. To avoid overfitting (or memorization), we need to filter out noise using RFE and handle categorical data using TF-IDF. These techniques are important to turn a weak model into a robust one.  
 Top three Predictive Features: "pga_winner"(%29), "Nominated_Both_Director_and_Picture"(%17), "Golden_Globe_Picture_Winner"(%13)
 
+
 ### Evaluation of the Advanced ML Model
-**Accuracy (%92)**: A very high rate of 92% has been achieved. This indicates that the model correctly classifies the vast majority of films. *(8% increase over the baseline model)*
+***Accuracy (%92)**: A very high rate of 92% has been achieved. This indicates that the model correctly classifies the vast majority of films. *(8% increase over the baseline model)*
 
 **Recall (%80)**: Our model correctly identified 4 out of the 5 actual winners in the test set, proving how capable the model is at "not missing the winner. *(300% increase over the baseline model)*
 
 
 **Precision (0.57)**: Since our model does not flag just one, but top two or three movies with the highest potential to win as "likely winners." These "False Positives" are not errors, instead they are strong contenders. *(72% increase over the baseline model)*
-  
 
-**F1-Score: (0.67)**: Since our dataset is highly imbalanced, F1-Score of our model is not significantly low. In fact, this score demonstrates that our model has reached a balanced structure in terms of both making accurate predictions and avoiding unnecessary false alarms. *(168% increae over the baseline model)*
+**Confusion Matrix Analysis**: The matrix reveals that our model successfully identified 4 out of 5 actual winners (True Positives), achieving a high Recall of 0.80. The single missed winner (False Negative = 1) corresponds to CODA, which we have identified as a statistical outlier (in the Generalization Capability part). Furthermore, the low number of False Positives (3) indicates that when the model predicts a win, it is highly likely to be a strong contender. Overall, the matrix confirms the model's reliability in distinguishing Oscar-worthy films.
+  
+**F1-Score: (0.67)**: Since our dataset is highly imbalanced, F1-Score of our model is not significantly low. In fact, this score demonstrates that our model has reached a balanced structure in terms of both making accurate predictions and avoiding unnecessary false alarms. *(168% increase over the baseline model)*
+
+ 
+**Interpretation of AUC Score:** Since our AUC score (0.93) is close to 1.0 indicates that the model has a high degree of separability, meaning it assigns higher probabilities to actual winners than to non-winners in almost all cases. Hence, our high AUC score confirms that the model ranks the candidates correctly with accuracy.  
+
+**The Probability Distribution Plot Analysis**:The Probability Distribution Plot reveals a sharp separation between classes. Non-winners are densely clustered near 0.0, showing effective filtering, while winners are shifted towards the high-probability region (0.6–1.0). This distinct split confirms our model is not merely guessing but confidently identifies true contenders based on robust learned signals.
 
 &nbsp;
 &nbsp;
@@ -108,7 +127,7 @@ Top three Predictive Features: "pga_winner"(%29), "Nominated_Both_Director_and_P
 &nbsp;
 &nbsp;
 In conclusion; enriched with TF-IDF, purified of noise via RFE, and refined through imbalance management, our model has successfully modeled a chaotic and human-centric problem like the Oscars with 92% accuracy and high consistency.  
-More explanation related to ML models can be found on "Machine_Learning.ipynb".
+More explanation and visualization related to ML models can be found on "Machine_Learning.ipynb".
 
 ## Conclusion
 * **Rejecting the Null Hypothesis:** Based on both statistical testing and the success of the Machine Learning model, we reject the Null Hypothesis ($H_0$). Quantifiable features do have significant predictive power.
