@@ -84,12 +84,12 @@ Then, I design two ML models. First one is the baseline model, that is created f
 Top three Predictive Features: "pga_winner"(%29), "Nominated_Both_Director_and_Picture"(%17), "Golden_Globe_Picture_Winner"(%13)
 
 ### Evaluation of the Advanced ML Model
-**Accuracy (%92)**: A very high rate of 92% has been achieved. This indicates that the model correctly classifies the vast majority of films. *(8% increae over the baseline model)*
+**Accuracy (%92)**: A very high rate of 92% has been achieved. This indicates that the model correctly classifies the vast majority of films. *(8% increase over the baseline model)*
 
-**Recall (%80)**: Our model correctly identified 4 out of the 5 actual winners in the test set, proving how capable the model is at "not missing the winner. *(300% increae over the baseline model)*
+**Recall (%80)**: Our model correctly identified 4 out of the 5 actual winners in the test set, proving how capable the model is at "not missing the winner. *(300% increase over the baseline model)*
 
 
-**Precision (0.57)**: Since our model does not flag just one, but top two or three movies with the highest potential to win as "likely winners." These "False Positives" are not errors, instead they are strong contenders. *(72% increae over the baseline model)*
+**Precision (0.57)**: Since our model does not flag just one, but top two or three movies with the highest potential to win as "likely winners." These "False Positives" are not errors, instead they are strong contenders. *(72% increase over the baseline model)*
   
 
 **F1-Score: (0.67)**: Since our dataset is highly imbalanced, F1-Score of our model is not significantly low. In fact, this score demonstrates that our model has reached a balanced structure in terms of both making accurate predictions and avoiding unnecessary false alarms. *(168% increae over the baseline model)*
