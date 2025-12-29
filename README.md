@@ -67,7 +67,7 @@ A Fisher's Exact Test on the relationship between winning a PGA award and winnin
 ## Machine Learning Model
 To operationalize these findings, I build a machine learning model that depends on *the Random Forest algorithm* to predict the Best Picture winner. 
 The motivation behind this choice is the specific nature of our dataset and the prediction task:
-1.   Handling Small Datasets and Overfitting:
+1.   Handling Small Datasets and Overfitting
 2.   Addressing Class Imbalance
 1.   Feature Importance and Interpretability
    
