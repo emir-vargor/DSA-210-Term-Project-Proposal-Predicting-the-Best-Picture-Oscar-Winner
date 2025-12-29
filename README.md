@@ -76,7 +76,7 @@ In this part, we use *the Random Forest algorithm*. The motivation behind this c
 
 &nbsp;
 &nbsp;
-
+Then, I design two ML models. First one is the baseline model, that is created for the purpose of seeking the parts that needs to be improved. The results of this model are considerably poor, since the baseline model doesnot encompass various enriching, purifying and, refining methods. Then, I used these tecniques to strenghen the model and create an Advanced ML Model: Natural Language Processing (NLP) with TF-IDF, Feature Selection via RFE, Dimensionality Reduction with PCA, Model Optimization with GridSearchCV & Cross-Validation.  
 
 ### Advanced Machine Learning Model
 
