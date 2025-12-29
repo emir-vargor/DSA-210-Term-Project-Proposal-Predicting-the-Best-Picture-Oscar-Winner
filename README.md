@@ -70,8 +70,10 @@ The motivation behind this choice is the specific nature of our dataset and the 
 1.   Handling Small Datasets and Overfitting:
 2.   Addressing Class Imbalance
 1.   Feature Importance and Interpretability
+   
 &nbsp;
 &nbsp;
+
 Then, I design two ML models. First one is the baseline model, that is created for the purpose of seeking the parts that needs to be improved. The results of this model are considerably poor, since the baseline model doesnot encompass various enriching, purifying and, refining methods. Then I used these tecniques to strenghen the model and create an Advanced ML Model:  
 
 1.   Natural Language Processing (NLP) with TF-IDF
