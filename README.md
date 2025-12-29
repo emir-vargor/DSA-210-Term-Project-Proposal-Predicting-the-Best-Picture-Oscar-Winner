@@ -65,13 +65,48 @@ We hypothesized a significant correlation between winning a Golden Globe and the
 A Fisher's Exact Test on the relationship between winning a PGA award and winning Best Picture yielded a p-value of 0.00000... (almost zero) ($p < 0.05$) and an Odds Ratio of 41.95. This extremely strong statistical significance leads us to reject the null hypothesis. The analysis confirms that the PGA Award is the single most critical indicator of Oscar success in this study.
 
 ## Machine Learning Model
-To operationalize these findings, I built a machine learning model to predict the Best Picture winner.
-* Model Selection: A Random Forest Classifier was chosen for its ability to handle tabular data, manage interactions between features (e.g., the combination of a high MetaScore and a PGA win), and provide feature importance rankings.
-* Training & Testing Split: Training Set is set of movies from 1990 to 2020. Testing Set is set of movies from 2021 to 2025.
-* Features Used: Runtime, MetaScore (MinMax Scaled). Boolean Flags: Nominated_Both_Director_and_Picture, Golden_Globe_Picture_Winner, pga_winner. Genre (One-Hot Encoded).
-* Model Results (2021–2025 Performance) : Predict correctly for 2021,2023,2024,2025. For 2022, CODA stood out as an anomaly, becoming only the sixth film in history to win Best Picture without a Best Director nomination.
-* Feature Importance: PGA Winner (32%), MetaScore (14%), Runtime (13%), Golden Globe Winner (9%)
+To operationalize these findings, I build a machine learning model that depends on *the Random Forest algorithm* to predict the Best Picture winner. 
+The motivation behind this choice is the specific nature of our dataset and the prediction task:
+1.   Handling Small Datasets and Overfitting:
+2.   Addressing Class Imbalance
+1.   Feature Importance and Interpretability
+&nbsp;
+&nbsp;
+Then, I design two ML models. First one is the baseline model, that is created for the purpose of seeking the parts that needs to be improved. The results of this model are considerably poor, since the baseline model doesnot encompass various enriching, purifying and, refining methods. Then I used these tecniques to strenghen the model and create an Advanced ML Model:  
 
+1.   Natural Language Processing (NLP) with TF-IDF
+2.  Feature Selection via RFE
+
+1.   Dimensionality Reduction with PCA
+2.   Model Optimization with GridSearchCV & Cross-Validation  
+Top three Predictive Features: "pga_winner"(%29), "Nominated_Both_Director_and_Picture"(%17), "Golden_Globe_Picture_Winner"(%13)
+
+### Evaluation of the Advanced ML Model
+**Accuracy (%92)**: A very high rate of 92% has been achieved. This indicates that the model correctly classifies the vast majority of films. *(8% increae over the baseline model)*
+
+**Recall (%80)**: Our model correctly identified 4 out of the 5 actual winners in the test set, proving how capable the model is at "not missing the winner. *(300% increae over the baseline model)*
+
+
+**Precision (0.57)**: Since our model does not flag just one, but top two or three movies with the highest potential to win as "likely winners." These "False Positives" are not errors, instead they are strong contenders. *(72% increae over the baseline model)*
+  
+
+**F1-Score: (0.67)**: Since our dataset is highly imbalanced, F1-Score of our model is not significantly low. In fact, this score demonstrates that our model has reached a balanced structure in terms of both making accurate predictions and avoiding unnecessary false alarms. *(168% increae over the baseline model)*
+
+&nbsp;
+&nbsp;
+### Generalization Capability  
+**2024 (Oppenheimer) & 2021 (Nomadland)**: The model placed the undisputed favorites of these years at rank #1 with very clear probability margins, such as 87% and 61%. This proves that the model has learned strong signals (Award history, Director, Critic scores) very well.  
+
+**2023 (Everything Everywhere All at Once)**: Thanks to the TF-IDF technique, our model can analyze films with cross-genre characteristics. Hence the winning probability increased to 53%,  which was 29% according to the baseline model.  
+
+**2022 (CODA)**: CODA is an outlier in our dataset since it is only the sixth film that won the Best Picture award without the Best Director nomination. Additionally, the movie did not win a Golden Globe. Hence our model putting CODA at 4th place indicates its robustness, since it did not get carried away by this "Noise" and remained loyal to the statistics.   
+
+**2025 (Anora)**: As seen in the table, the movie shares the strong statistical characteristics of past winners like Oppenheimer and Nomadland (Director nomination and key precursor awards). Consequently, the model correctly identified it as the clear favorite.
+
+&nbsp;
+&nbsp;
+In conclusion; enriched with TF-IDF, purified of noise via RFE, and refined through imbalance management, our model has successfully modeled a chaotic and human-centric problem like the Oscars with 92% accuracy and high consistency.  
+More explanation related to ML models can be found on "Machine_Learning.ipynb".
 
 ## Conclusion
 * **Rejecting the Null Hypothesis:** Based on both statistical testing and the success of the Machine Learning model, we reject the Null Hypothesis ($H_0$). Quantifiable features do have significant predictive power.
@@ -79,7 +114,7 @@ To operationalize these findings, I built a machine learning model to predict th
 
 
 ## AI Usage
-This project utilized Generative AI tools (specifically Google Gemini) to assist in the documentation, coding and debugging phases. Specific prompts are shared in .ipynb files.
+This project utilized Generative AI tools (specifically Google Gemini) to assist in the documentation, coding and debugging phases. Specific prompts are shared in ".ipynb" files.
 
 ## Limitations
 * **Oscar Bump:** I initially intended to analyze the correlation between financial success and award chances, as many industry experts attribute the underperformance of films like Babylon (2022) at the Oscars to their poor box office results. However, as explained in the project proposal, a 'Best Picture' win provides significant marketing value and reputation. Therefore, the model excludes box office and IMDb rating data to avoid data leakage, as ticket sales and public rating often increase significantly after nominations and award wins. Using total gross would imply that the model has access to future information that was not available at the time of prediction. 
