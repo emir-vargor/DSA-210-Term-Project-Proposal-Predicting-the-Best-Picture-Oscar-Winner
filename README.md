@@ -83,6 +83,10 @@ The heatmap reveals several critical insights regarding the "pattern" of Oscar w
 1.  **PGA Nomination (Strongest Indicator):** The highest correlation with the `winner` column are observed in `pga_winner` (0.64). This strongly suggests that industry support is the most significant predictor.
 2.  **Golden Globe Winning and Director Nomination (Moderate Impact):** `Golden_Globe_Picture_Winner` and `Nominated_Both_Director_and_Picture` show a positive correlation, but it is not as dominant as the PGA awards.
 
+&nbsp;
+&nbsp;
+This confirms that while artistic metrics does not matter significantly, **industry support and awards momentum** are the definitive drivers of an Oscar win.
+
 ## Machine Learning Model
 To operationalize these findings, I build a machine learning model that depends on *the Random Forest algorithm* to predict the Best Picture winner. 
 The motivation behind this choice is the specific nature of our dataset and the prediction task:
@@ -107,12 +111,33 @@ Top three Predictive Features: "pga_winner"(%29), "Nominated_Both_Director_and_P
 
 
 **Precision (0.57)**: Since our model does not flag just one, but top two or three movies with the highest potential to win as "likely winners." These "False Positives" are not errors, instead they are strong contenders. *(72% increae over the baseline model)*
-  
-
-**F1-Score: (0.67)**: Since our dataset is highly imbalanced, F1-Score of our model is not significantly low. In fact, this score demonstrates that our model has reached a balanced structure in terms of both making accurate predictions and avoiding unnecessary false alarms. *(168% increae over the baseline model)*
 
 &nbsp;
 &nbsp;
+![Confusion Matrix](Machine_Learning/confusion_matrix.png)  
+
+**Confusion Matrix Analysis**: The matrix reveals that our model successfully identified 4 out of 5 actual winners (True Positives), achieving a high Recall of 0.80. The single missed winner (False Negative = 1) corresponds to CODA, which we have identified as a statistical outlier (in the Generalization Capability part). Furthermore, the low number of False Positives (3) indicates that when the model predicts a win, it is highly likely to be a strong contender. Overall, the matrix confirms the model's reliability in distinguishing Oscar-worthy films.
+
+
+&nbsp;
+&nbsp;
+![Probability Distribution](Machine_Learning/probability_distribution.png)  
+
+
+**The Probability Distribution Plot Analysis**:The Probability Distribution Plot reveals a sharp separation between classes. Non-winners are densely clustered near 0.0, showing effective filtering, while winners are shifted towards the high-probability region (0.6–1.0). This distinct split confirms our model is not merely guessing but confidently identifies true contenders based on robust learned signals.
+
+&nbsp;
+&nbsp;
+![ROC Curve](Machine_Learning/ROC_curve.png) 
+
+
+**Interpretation of AUC Score:** Since our AUC score (0.93) is close to 1.0 indicates that the model has a high degree of separability, meaning it assigns higher probabilities to actual winners than to non-winners in almost all cases. Hence, our high AUC score confirms that the model ranks the candidates correctly with accuracy.  
+
+
+&nbsp;
+&nbsp;
+**F1-Score: (0.67)**: Since our dataset is highly imbalanced, F1-Score of our model is not significantly low. In fact, this score demonstrates that our model has reached a balanced structure in terms of both making accurate predictions and avoiding unnecessary false alarms. *(168% increase over the baseline model)*
+
 ### Generalization Capability  
 **2024 (Oppenheimer) & 2021 (Nomadland)**: The model placed the undisputed favorites of these years at rank #1 with very clear probability margins, such as 87% and 61%. This proves that the model has learned strong signals (Award history, Director, Critic scores) very well.  
 
