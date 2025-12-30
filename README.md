@@ -90,7 +90,7 @@ This confirms that while artistic metrics does not matter significantly, **indus
 ## Machine Learning Model
 To operationalize these findings, I build a machine learning model that depends on *the Random Forest algorithm* to predict the Best Picture winner. 
 The motivation behind this choice is the specific nature of our dataset and the prediction task:
-1.   Handling Small Datasets and Overfitting:
+1.   Handling Small Datasets and Overfitting
 2.   Addressing Class Imbalance
 1.   Feature Importance and Interpretability
 &nbsp;
@@ -101,8 +101,12 @@ Then, I design two ML models. First one is the baseline model, that is created f
 2.  Feature Selection via RFE
 
 1.   Dimensionality Reduction with PCA
-2.   Model Optimization with GridSearchCV & Cross-Validation  
-Top three Predictive Features: "pga_winner"(%29), "Nominated_Both_Director_and_Picture"(%17), "Golden_Globe_Picture_Winner"(%13)
+2.   Model Optimization with GridSearchCV & Cross-Validation
+
+&nbsp;
+&nbsp;
+![Feature Importance](Machine_Learning/feature_importance.png) 
+**Top three Predictive Features:** "pga_winner"(%29), "Nominated_Both_Director_and_Picture"(%17), "Golden_Globe_Picture_Winner"(%13)
 
 ### Evaluation of the Advanced ML Model
 **Accuracy (%92)**: A very high rate of 92% has been achieved. This indicates that the model correctly classifies the vast majority of films. *(8% increae over the baseline model)*
@@ -131,7 +135,7 @@ Top three Predictive Features: "pga_winner"(%29), "Nominated_Both_Director_and_P
 ![ROC Curve](Machine_Learning/ROC_curve.png) 
 
 
-**Interpretation of AUC Score:** Since our AUC score (0.93) is close to 1.0 indicates that the model has a high degree of separability, meaning it assigns higher probabilities to actual winners than to non-winners in almost all cases. Hence, our high AUC score confirms that the model ranks the candidates correctly with accuracy.  
+**Interpretation of AUC Score:** Since our AUC score (0.93) is close to 1.0 indicates that the model has a high degree of separability, meaning it assigns higher probabilities to actual winners than to non-winners in almost all cases. Hence, our high AUC score confirms that the model ranks the candidates correctly with accuracy.
 
 
 &nbsp;
